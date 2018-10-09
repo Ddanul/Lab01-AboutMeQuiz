@@ -24,8 +24,8 @@ namespace Lab01_AboutMeQuiz
             }
 
             //Question 4
-            string guess = GuessDog();
-            if (guess == "French Bulldog" || guess == "french bulldog" || guess == "Frenchie" || guess == "frenchie") 
+            string dog = GuessDog();
+            if (dog == "French Bulldog" || dog == "french bulldog" || dog == "Frenchie" || dog == "frenchie") 
             {
                 Console.WriteLine("Correct!  His Frenchie's name is Manolo.");
                 score++;
@@ -36,6 +36,16 @@ namespace Lab01_AboutMeQuiz
             }
 
             //Question 5
+            string hobby = GuessHobby();
+            if( hobby == "drawing" || hobby == "eating")
+            {
+                Console.WriteLine("Correct!  Danul likes to draw and eat.");
+                score++;
+            }
+            else
+            {
+                Console.WriteLine("Nice guess, but Danul enjoys drawing and eating the most.");
+            }
 
             //Display overall score.
             Console.WriteLine($"You got {score} correct and {5 - score} incorrect.");
@@ -102,9 +112,14 @@ namespace Lab01_AboutMeQuiz
         //method for question 4
         static string GuessDog()
         {
-            Console.Write("What kind of dog does Danul have?");
-            string guess = Console.ReadLine();
-            return guess;
+            Console.Write("What kind of dog does Danul have? ");
+            return Console.ReadLine();
+        }
+
+        static string GuessHobby()
+        {
+            Console.Write("What is one of Danul's top two favorite hobbies? ");
+            return Console.ReadLine();
         }
     }
 }
