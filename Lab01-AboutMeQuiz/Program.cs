@@ -4,22 +4,29 @@ namespace Lab01_AboutMeQuiz
 {
     class Program
     {
-        //class to have a global variable for score.
-        static class Count
-        {
-            public static int score;
-        }
 
         static void Main(string[] args)
         {
+            //Declare variable to keep score.
+            int score = 0;
             Console.WriteLine("Let's Take A Quiz About Danul!");
-            GuessAge();
-            GuessHometown();
+            //Question 1
+            score += GuessAge();
+            //Question 2
+            score += GuessHometown();
+            //Question 3. Return type of bool.  If guessed right, return true and increment score.
+            if (GuessColor())
+            {
+                score++;
+            }
+
+            //Display overall score.
+            Console.WriteLine($"You got {score} correct and {5 - score} incorrect.");
 
         }
 
         //method to ask question about age and increment score if correct.
-        static void GuessAge()
+        static int GuessAge()
         {
             Console.Write("Can you guess Danul's age? ");
             int guess = Convert.ToInt32(Console.ReadLine());
@@ -27,17 +34,17 @@ namespace Lab01_AboutMeQuiz
             if (guess == 30)
             {
                 Console.WriteLine("Correct!  Danul is 30 years old.");
-                Count.score++;
+                return 1;
             }
             else
             {
                 Console.WriteLine("Incorrect, Danul is actually 30 years old.");
+                return 0;
             }
-            Console.WriteLine($"Current Score: {Count.score}");
         }
 
         //method to ask question about hometown.
-        static void GuessHometown()
+        static int GuessHometown()
         {
             Console.Write("Where is Danul's home state? ");
             string guess = Console.ReadLine();
@@ -45,13 +52,34 @@ namespace Lab01_AboutMeQuiz
             if(guess == "Texas" || guess == "TX")
             {
                 Console.WriteLine("Correct!  Danul is from Houston, Texas.");
-                Count.score++;
-            }
+                return 1;            }
             else
             {
                 Console.WriteLine("Incorrect.  Danul is from Houston, Texas.");
+                return 0;
             }
-            Console.WriteLine($"Current Score: {Count.score}");
+        }
+
+        //method to ask if my hair is brown or not.
+        static bool GuessColor()
+        {
+            Console.Write("Is Danul's hair brown? [Y/N]");
+            string guess = Console.ReadLine();
+
+            if(guess != "Y" && guess != "N")
+            {
+                Console.WriteLine("You didn't input a valid guess!  No points for you!  Moving on!");
+                return false;
+            }else if(guess == "Y")
+            {
+                Console.WriteLine("Correct!  Danul's hair is the loveliest shade of brown.");
+                return true;
+            }
+            else {
+                Console.WriteLine("Incorrect.  Danul's hair is brown.");
+                return false;
+
+            }
         }
     }
 }
