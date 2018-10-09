@@ -10,15 +10,32 @@ namespace Lab01_AboutMeQuiz
             //Declare variable to keep score.
             int score = 0;
             Console.WriteLine("Let's Take A Quiz About Danul!");
+
             //Question 1
             score += GuessAge();
+
             //Question 2
             score += GuessHometown();
+
             //Question 3. Return type of bool.  If guessed right, return true and increment score.
             if (GuessColor())
             {
                 score++;
             }
+
+            //Question 4
+            string guess = GuessDog();
+            if (guess == "French Bulldog" || guess == "french bulldog" || guess == "Frenchie" || guess == "frenchie") 
+            {
+                Console.WriteLine("Correct!  His Frenchie's name is Manolo.");
+                score++;
+            }
+            else
+            {
+                Console.WriteLine("Incorrect.  Danul has a Frenchie named Manolo.");
+            }
+
+            //Question 5
 
             //Display overall score.
             Console.WriteLine($"You got {score} correct and {5 - score} incorrect.");
@@ -80,6 +97,14 @@ namespace Lab01_AboutMeQuiz
                 return false;
 
             }
+        }
+
+        //method for question 4
+        static string GuessDog()
+        {
+            Console.Write("What kind of dog does Danul have?");
+            string guess = Console.ReadLine();
+            return guess;
         }
     }
 }
